@@ -19,13 +19,13 @@ public class Main extends Application
 	//--------------------------------------------------------------------
 	public void start(Stage primaryStage)
 	{
-		Text hello = new Text(50, 50, "Hello, JavaFX!");
+		Text hello = new Text(50, 50, "WORK" );
 		Text question = new Text(120, 80, "How's it going?");
 
 		Group root = new Group(hello, question);
-		Scene scene = new Scene(root, 300, 120, Color.FORESTGREEN);
+		Scene scene = new Scene(root, 300, 120, Color.WHITE);
 
-		primaryStage.setTitle("A JavaFX Program");
+		primaryStage.setTitle("hhshssh");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
