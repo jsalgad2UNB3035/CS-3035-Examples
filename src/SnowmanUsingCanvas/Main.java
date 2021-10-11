@@ -17,8 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage)
     {
         StackPane stackPane = new StackPane();
-        Scene scene = new Scene(stackPane, 400, 400, Color.LIGHTBLUE);
-        Canvas canvas = new Canvas(400,400);
+        Scene scene = new Scene(stackPane, 500, 600, Color.LIGHTBLUE);
+        Canvas canvas = new Canvas(scene.getWidth(),scene.getHeight());
         stackPane.getChildren().add(canvas);
 
         GraphicsContext g = canvas.getGraphicsContext2D();
@@ -43,11 +43,14 @@ public class Main extends Application {
         g.fillOval(mid-10, top+10, 5, 5);   // left eye
         g.fillOval(mid+5, top+10, 5, 5);    // right eye
 
-        g.fillArc(mid-10, top+20, 20, 10, 190, 160, ArcType.OPEN);   // smile
+        g.fillArc(mid-10, top+20, 20, 10, 190, 160, ArcType.ROUND);   // smile
 
+        g.setStroke(Color.BROWN);
+        g.setLineWidth(5);
         g.strokeLine(mid-25, top+60, mid-50, top+40);  // left arm
         g.strokeLine(mid+25, top+60, mid+55, top+60);  // right arm
 
+        g.setStroke(Color.BLACK);
         g.strokeLine(mid-20, top+5, mid+20, top+5);  // brim of hat
         g.fillRect (mid-15, top-20, 30, 25);        // top of hat*/
 
