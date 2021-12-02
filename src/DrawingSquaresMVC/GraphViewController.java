@@ -20,7 +20,7 @@ public class GraphViewController {
 
             @Override
             public void handle(MouseEvent event) {
-
+//                System.out.println(event.getEventType());
                 //click to start the creation
                 if (state == State.READY) {
                     if (event.getEventType() == MouseEvent.MOUSE_PRESSED) {
