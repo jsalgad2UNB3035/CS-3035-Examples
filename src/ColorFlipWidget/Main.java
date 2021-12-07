@@ -10,14 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.List;
 
 public class Main extends Application {
-    private Text text;
+
+    Text text;
 
     public void start(Stage primaryStage)
     {
@@ -35,6 +36,7 @@ public class Main extends Application {
         root.add(fw2, 1, 0);
 
         text = new Text();
+        text.setFont(Font.font ("Verdana", 20));
         updateColorName(fw1.getCounter());
         root.add(text, 0, 1, 2, 1);
         root.setHalignment(text, HPos.CENTER);
@@ -49,6 +51,7 @@ public class Main extends Application {
 
         // create button to explicitly set the value of the right widget
         Button button = new Button("Set to index 50");
+        button.setFont(Font.font ("Verdana", 20));
         button.setOnAction(e->fw2.setCounter(50));
         root.add(button, 0, 2, 2, 1);
         root.setHalignment(button, HPos.CENTER);
@@ -71,6 +74,7 @@ public class Main extends Application {
     private void updateColorName(int colorValue)
     {
         List<String> colorNameList = ColorUtility.getColorNameList();
+        text.setFont(Font.font ("Verdana", 20));
         text.setText(colorNameList.get(colorValue));
     }
 }
