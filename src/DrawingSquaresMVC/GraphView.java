@@ -11,8 +11,7 @@ public class GraphView extends Pane {
 
     public GraphView() {
         canvas = new Canvas();
-        canvas.setLayoutX(0);
-        canvas.setWidth(0);
+
         this.getChildren().add(canvas);
 
         //if any change happens to the model (the list of squares) redraw.

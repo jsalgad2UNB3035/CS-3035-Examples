@@ -13,6 +13,7 @@ public class Controller {
     @FXML
     private Button changeTextButton;
 
+    @FXML
     public void updateText(ActionEvent actionEvent) {
         textOutput.setText("CLICKED!");
         changeTextButton.setText("now there is nothing to see");

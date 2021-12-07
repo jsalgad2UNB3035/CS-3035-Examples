@@ -13,11 +13,11 @@ import java.util.Date;
 public class MyCustomPane extends Pane {
 
     private static int count = 0;
-
+    private float xPos;
     public MyCustomPane()
     {
         super();
-
+        xPos = 0;
     }
 
     @Override
@@ -30,17 +30,19 @@ public class MyCustomPane extends Pane {
 
             //alternatively the size can be determined using max, min, and/or pref size
             //base on your layout algorithm
-//            n.prefWidth(100);
-//            n.prefHeight(100);
+            n.resize(this.getWidth()/this.getChildren().size(),n.getLayoutBounds().getHeight());
 
             //relocate vs translate:
             // layout algorithms should use relocate by convention
             // application programmers would use translate
-            n.relocate(this.getWidth() - n.getBoundsInParent().getWidth(),this.getHeight() - n.getBoundsInParent().getHeight());
-            n.translateXProperty().set(-100);
+            //n.relocate(this.getWidth() - n.getBoundsInParent().getWidth(),this.getHeight() - n.getBoundsInParent().getHeight());
+            n.relocate(xPos,0);
+
+            System.out.println(xPos);
+            System.out.println(n.getClass());
+            xPos += n.getBoundsInLocal().getWidth();
 
         }
-        System.out.println(count++);
-
+        xPos = 0;
     }
 }
