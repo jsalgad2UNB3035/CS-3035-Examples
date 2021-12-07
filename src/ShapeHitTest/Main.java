@@ -66,6 +66,11 @@ public class Main extends Application {
         Shape s = (Shape) mouseEvent.getTarget();
         Pane root = (Pane) s.getParent();
 
+        Point2D clickPoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+
+        if (((Shape) mouseEvent.getTarget()).contains(clickPoint))
+            System.out.println("Clicked: "+mouseEvent.getTarget().getClass());
+
         if (mouseEvent.isPrimaryButtonDown()) {
             //        System.out.println("Shape contains: "+(s.contains(mouseEvent.getX(), mouseEvent.getY())));
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane xmlns="http://javafx.com/fxml/1" styleClass="root" stylesheets="@application.css">
+<Pane styleClass="root" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
 	<Text x="50" y="50">Hello, JavaFX FXML!</Text>
-	<Text x="120" y="80" text="How's it going?" />
+	<Text text="How's it going?" x="120" y="80" />
+   <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Click Me!" />
 </Pane>

@@ -46,6 +46,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -71,11 +72,14 @@ import javafx.stage.Stage;
 public final class Main extends Application {
     private final BooleanProperty dragModeActiveProperty =
             new SimpleBooleanProperty(this, "dragModeActive", true);
-
+    private Scene scene;
     @Override
     public void start(final Stage stage) {
+        final BorderPane sceneRoot = new BorderPane();
+        final Scene scene = new Scene(sceneRoot, 400, 300);
+
         final Node loginPanel =
-                makeDraggable(createLoginPanel());
+                makeDraggable(createLoginPanel(scene));
         final Node confirmationPanel =
                 makeDraggable(createConfirmationPanel());
         final Node progressPanel =
@@ -90,8 +94,6 @@ public final class Main extends Application {
                 confirmationPanel,
                 progressPanel);
 
-        final BorderPane sceneRoot = new BorderPane();
-
         BorderPane.setAlignment(panelsPane, Pos.TOP_LEFT);
         sceneRoot.setCenter(panelsPane);
 
@@ -101,7 +103,7 @@ public final class Main extends Application {
 
         dragModeActiveProperty.bind(dragModeCheckbox.selectedProperty());
 
-        final Scene scene = new Scene(sceneRoot, 400, 300);
+
         stage.setScene(scene);
         stage.setTitle("Draggable Panels Example");
         stage.show();
@@ -121,6 +123,7 @@ public final class Main extends Application {
                     public void handle(final MouseEvent mouseEvent) {
                         if (dragModeActiveProperty.get()) {
                             // disable mouse events for all children
+                            node.toFront();
                             mouseEvent.consume();
                         }
                     }
@@ -165,12 +168,27 @@ public final class Main extends Application {
         return wrapGroup;
     }
 
-    private static Node createLoginPanel() {
+    private static Node createLoginPanel(Scene scene) {
         final ToggleGroup toggleGroup = new ToggleGroup();
 
         final TextField textField = new TextField();
         textField.setPrefColumnCount(10);
         textField.setPromptText("Your name");
+
+        textField.addEventFilter(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ((TextField) event.getTarget()).setStyle("-fx-border-color: red;");
+                scene.setCursor(Cursor.NE_RESIZE);
+            }
+        });
+
+        textField.addEventFilter(MouseEvent.MOUSE_EXITED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                ((TextField) event.getTarget()).setStyle("-fx-border-color: black;");
+            }
+        });
 
         final PasswordField passwordField = new PasswordField();
         passwordField.setPrefColumnCount(10);

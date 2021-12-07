@@ -1,6 +1,7 @@
 package NotificationsOnChangeOfSimpleListItem;
 
 
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 import javafx.beans.Observable;
@@ -76,5 +77,6 @@ public class Main {
                         .map(Fruit::toString)
                         .collect(Collectors.joining("\n"))
         );
+
     }
 }
